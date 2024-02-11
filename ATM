@@ -1,0 +1,100 @@
+package Task3;
+
+
+import java.util.Scanner;
+
+public class ATM {
+
+    
+    public BankAccount bank;
+
+  
+    public ATM(BankAccount bankAccount) {
+        this.bank = bankAccount;
+    }
+    
+    
+    private void withdraw(int amount) {
+        if (bank.getBalance() < amount) {
+            System.out.println("not enough money");
+        }
+        else
+        {
+
+        bank.withdraw(amount);
+        System.out.println(" Sucessfull withdraw "+amount);
+        }
+    }
+
+  
+    public void withdraw(){
+        System.out.println("Enter the amount you want to withdraw in your account: ");
+        Scanner s = new Scanner(System.in);
+        int amount = s.nextInt();
+
+        withdraw(amount);
+    }
+    
+  
+
+
+    
+   
+
+    private void deposit(int amount) {
+        bank.deposit(amount);
+        System.out.println("sucessfull deposit "+amount);
+    }
+
+    
+    public void deposit() {
+        System.out.println("Enter the amount you want to deposit in your account: ");
+        Scanner ss = new Scanner(System.in);
+        int amount = ss.nextInt();
+
+        deposit(amount);
+    }
+
+  
+    private void checkBalance() {
+        System.out.println("Your account balance: "+bank.getBalance());
+    }
+
+        
+    
+    public static void main(String[] args){
+    	  BankAccount bankk = new BankAccount(0);
+          ATM atm = new ATM(bankk);
+
+          int choose;
+          Scanner scanner = new Scanner(System.in);
+
+          System.out.println("ATM Menu");
+          System.out.println("1. Deposit in your account");
+          System.out.println("2. Withdraw in your account");
+          System.out.println("3. Check Balance in your account");
+          System.out.println("4. Exit Menu");
+
+          do {
+              System.out.println("Please enter the nb of your choice (1,2,3,4): ");
+              choose = scanner.nextInt();
+
+              if (choose == 1) {
+                  atm.deposit();
+              } else if (choose == 2) {
+                  atm.withdraw();
+              } else if (choose == 3) {
+                  atm.checkBalance();
+              } else if (choose == 4) {
+                  System.exit(0);
+              } else {
+                  System.out.println("Invalid choice TRY AGAIN");
+              }
+
+          } while (choose != 4);
+
+          scanner.close();
+        
+}
+    }
+    
