@@ -1,0 +1,30 @@
+package Task3;
+
+public class BankAccount {
+
+  
+    private int balance;
+
+    
+    public BankAccount(int balance) {
+        this.balance = balance;
+    }
+    
+    public void deposit(int amount) {
+        balance = balance + amount ;
+    }
+
+  
+    public void withdraw(int amount){
+        if (balance < amount) {
+           System.out.println("no enough balance to make withdraw");
+        }
+
+        balance = balance - amount;
+    }
+
+    // balance getter
+    public int getBalance() {
+        return balance;
+    }
+}
